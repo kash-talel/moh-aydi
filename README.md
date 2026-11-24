@@ -1,24 +1,21 @@
-# Mohamed Aydi: coaching website and birthday surprise
+# Mohamed Aydi: coaching website
 
 This is a static site for GitHub Pages. It has no build step and no dependencies.
 
-| Path | What it is |
-|---|---|
-| `/` | His coaching site, in French: hero, manifesto, method (three pillars), who it's for, **Le Labo** (a bulking calorie and macro calculator), gallery, about, and a Calendly booking embed |
-| `/joyeux-anniversaire/` | The surprise: an envelope, then a cake (click to blow out the candles), then confetti, polaroids, your letter, and "this site is yours" |
-| Secret | **Click the "M.A" logo 5 times quickly** on the main site to open the surprise |
+Live: https://kash-talel.github.io/moh-aydi/
 
-## Before his birthday: personalize
+The site is in French. Its sections are: hero, manifesto, the method (three pillars), who it's for, **Le Labo** (a bulking calorie and macro calculator), the Skool community, a gallery, about, and a Calendly booking embed.
 
-Everything is in the `BIRTHDAY = { … }` object at the bottom of `joyeux-anniversaire/index.html`:
+## Connecting the Skool community
 
-- `age`: the number of candles, and the number written on the cake
-- `dateLine`: e.g. `"12 décembre 2026"` (leave it empty to show today's date)
-- `message`: your letter (an array of paragraphs)
-- `from`: your signature
-- `photos`: swap in family photos (put them in `assets/img/` and use the path `../assets/img/your-photo.jpg`)
+In `index.html`, find the `<section class="community" …>` and paste the community's link into `data-skool-url`:
 
-To preview the message directly, open `/joyeux-anniversaire/#message`.
+```html
+<section class="community section" id="communaute" data-skool-url="https://www.skool.com/your-group">
+```
+
+- **Empty (the default):** the button says "Être prévenu du lancement" ("Get notified at launch") and points to his Instagram.
+- **Filled in:** the button becomes "Rejoindre la communauté" ("Join the community"), it opens Skool, and a "Skool" link appears in the footer.
 
 ## Test locally
 
@@ -27,20 +24,12 @@ python -m http.server 8000
 # → http://localhost:8000
 ```
 
-## Publish on GitHub Pages
+## Publishing
 
-```bash
-gh repo create moh-aydi --public --source=. --push
-gh api repos/{owner}/moh-aydi/pages -X POST -f "source[branch]=main" -f "source[path]=/"
-```
-
-The site will be at `https://<your-username>.github.io/moh-aydi/`.
-Send him the link `…/moh-aydi/joyeux-anniversaire/` on his birthday.
-
-> On GitHub's free plan, Pages requires a **public** repository. If you publish before his birthday, the surprise page is reachable by anyone who has the link. It isn't indexed (`noindex`), but publish close to the day if you want to stay safe.
+Every `git push` to `main` updates the site within 1 to 2 minutes.
 
 ## Later
 
-- **Custom domain**: add a `CNAME` file with e.g. `mohamedaydi.com` and configure the DNS.
-- **Testimonials / before-and-after**: add a section once he has clients.
+- **Custom domain:** add a `CNAME` file containing, for example, `mohamedaydi.com`, and configure the DNS.
+- **Testimonials / before-and-after:** add a section once he has clients.
 - The photos are credited in the gallery (@prateek_it_is, @roeeeeyy, @eunice.rsl).

@@ -66,14 +66,15 @@
 
   $('year').textContent = new Date().getFullYear();
 
-  // Secret : 5 clics rapides sur le logo → page surprise
-  const logo = document.getElementById('logo');
-  let clicks = 0, timer;
-  logo.addEventListener('click', (e) => {
-    clicks++;
-    logo.classList.remove('pulse'); void logo.offsetWidth; logo.classList.add('pulse');
-    clearTimeout(timer);
-    timer = setTimeout(() => { clicks = 0; }, 1500);
-    if (clicks >= 5) { e.preventDefault(); window.location.href = 'joyeux-anniversaire/'; }
-  });
+  // Communauté Skool : si un lien est renseigné, les boutons y mènent directement
+  const community = document.getElementById('communaute');
+  const skoolUrl = community && community.dataset.skoolUrl.trim();
+  if (skoolUrl) {
+    const btn = $('skool-btn');
+    btn.href = skoolUrl;
+    btn.textContent = 'Rejoindre la communauté';
+    $('skool-status').textContent = 'Sur Skool';
+    const f = $('skool-footer');
+    f.href = skoolUrl; f.target = '_blank'; f.rel = 'noopener'; f.hidden = false;
+  }
 })();

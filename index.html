@@ -19,11 +19,12 @@
   <div class="grain" aria-hidden="true"></div>
 
   <header class="nav">
-    <a href="#top" class="nav__logo" id="logo" aria-label="Mohamed Aydi, retour en haut">M<span>.</span>A</a>
+    <a href="#top" class="nav__logo" aria-label="Mohamed Aydi, retour en haut">M<span>.</span>A</a>
     <nav class="nav__links" aria-label="Navigation principale">
       <a href="#methode">Méthode</a>
       <a href="#labo">Le Labo</a>
       <a href="#mouvement">Mouvement</a>
+      <a href="#communaute">Communauté</a>
       <a href="#about">À propos</a>
     </nav>
     <a href="#reserver" class="btn btn--small">Réserver un appel</a>
@@ -220,8 +221,31 @@
       <img src="assets/img/street.jpg" alt="Dans la rue, veste en cuir et sac de sport" loading="lazy">
       <img src="assets/img/window.jpg" alt="Assis au sol près d'une fenêtre lumineuse" loading="lazy">
       <img src="assets/img/gym-tee.jpg" alt="Selfie au miroir de la salle en t-shirt noir" loading="lazy">
-      <img src="assets/img/corner.jpg" alt="Assis dans un coin de studio blanc, tout en noir" loading="lazy">
       <img src="assets/img/portrait-tank.jpg" alt="Portrait de profil en débardeur blanc" loading="lazy">
+    </section>
+
+    <!-- COMMUNAUTÉ SKOOL
+         Quand la communauté est en ligne, colle son lien dans data-skool-url,
+         ex. data-skool-url="https://www.skool.com/ton-groupe" -->
+    <section class="community section" id="communaute" data-skool-url="">
+      <div class="community__text">
+        <p class="eyebrow reveal">La communauté</p>
+        <h2 class="reveal">Progresse avec<br><em>les autres.</em></h2>
+        <p class="community__lead reveal">Un espace privé sur Skool pour celles et ceux qui veulent prendre du muscle sérieusement : les programmes, les bases de la nutrition, et une équipe qui avance avec toi chaque semaine.</p>
+        <ul class="community__grid reveal">
+          <li><strong>Programmes</strong><span>Des cycles d'entraînement prêts à suivre, du débutant au confirmé.</span></li>
+          <li><strong>Nutrition</strong><span>Repas, quantités, budget étudiant : manger assez sans se compliquer la vie.</span></li>
+          <li><strong>Lives &amp; Q&amp;R</strong><span>Des sessions en direct pour poser tes questions et corriger ta technique.</span></li>
+          <li><strong>Régularité</strong><span>Des défis et un suivi de groupe pour ne plus lâcher au bout de deux semaines.</span></li>
+        </ul>
+        <div class="community__cta reveal">
+          <a class="btn" id="skool-btn" href="https://www.instagram.com/mohamedaydi.ig/" target="_blank" rel="noopener">Être prévenu du lancement</a>
+          <p class="community__status" id="skool-status">Bientôt disponible sur Skool</p>
+        </div>
+      </div>
+      <div class="community__img reveal">
+        <img src="assets/img/corner.jpg" alt="Assis dans un coin de studio blanc, tout en noir" loading="lazy">
+      </div>
     </section>
 
     <!-- RESERVER -->
@@ -246,6 +270,7 @@
         <a href="https://www.instagram.com/mohamedaydi.ig/" target="_blank" rel="noopener">Instagram · Coaching</a>
         <a href="https://www.instagram.com/moh_aydi/" target="_blank" rel="noopener">Instagram · Perso</a>
         <a href="https://www.youtube.com/@mohameday-jpg" target="_blank" rel="noopener">YouTube</a>
+        <a href="#communaute" id="skool-footer" hidden>Skool</a>
         <a href="https://calendly.com/mohamedaydi7/first-call" target="_blank" rel="noopener">Calendly</a>
       </div>
       <p class="footer__copy">© <span id="year">2026</span> Mohamed Aydi · Paris</p>
