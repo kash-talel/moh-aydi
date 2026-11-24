@@ -1,10 +1,10 @@
-# Mohamed Aydi: coaching website and birthday surprise 🎂
+# Mohamed Aydi: coaching website and birthday surprise
 
 This is a static site for GitHub Pages. It has no build step and no dependencies.
 
 | Path | What it is |
 |---|---|
-| `/` | His coaching site, in French: hero, manifesto, method (🧪 ♾ 📈), who it's for, **Le Labo** (a bulking calorie and macro calculator), gallery, about, and a Calendly booking embed |
+| `/` | His coaching site, in French: hero, manifesto, method (three pillars), who it's for, **Le Labo** (a bulking calorie and macro calculator), gallery, about, and a Calendly booking embed |
 | `/joyeux-anniversaire/` | The surprise: an envelope, then a cake (click to blow out the candles), then confetti, polaroids, your letter, and "this site is yours" |
 | Secret | **Click the "M.A" logo 5 times quickly** on the main site to open the surprise |
 

@@ -66,7 +66,7 @@
 
   $('year').textContent = new Date().getFullYear();
 
-  // 🎂 Secret : 5 clics rapides sur le logo → page surprise
+  // Secret : 5 clics rapides sur le logo → page surprise
   const logo = document.getElementById('logo');
   let clicks = 0, timer;
   logo.addEventListener('click', (e) => {

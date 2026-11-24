@@ -114,7 +114,7 @@ h2 em { color: var(--bone-2); }
 .marquee__track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
 .marquee span { font-family: var(--serif); font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem); padding: 0 2rem; white-space: nowrap; }
 .marquee span:nth-child(odd) { font-style: italic; color: var(--bone-2); }
-.marquee span::after { content: "✦"; font-size: .5em; color: var(--rust); margin-left: 4rem; vertical-align: middle; font-style: normal; }
+.marquee span::after { content: ""; display: inline-block; width: .22em; height: .22em; border-radius: 50%; background: var(--rust); margin-left: 4rem; vertical-align: middle; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* Sections */
@@ -133,8 +133,7 @@ h2 em { color: var(--bone-2); }
 .method__grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink-3); border: 1px solid var(--ink-3); }
 .method__card { background: var(--ink); padding: clamp(1.75rem, 3vw, 3rem); position: relative; min-height: 22rem; display: flex; flex-direction: column; transition: background .4s; }
 .method__card:hover { background: var(--ink-2); }
-.method__icon { font-size: 2.5rem; margin-bottom: auto; filter: grayscale(.3); }
-.method__num { position: absolute; top: 1.75rem; right: 1.75rem; font-family: var(--serif); font-size: 1.25rem; color: var(--muted); }
+.method__num { font-family: var(--serif); font-style: italic; font-size: clamp(4rem, 3rem + 3vw, 6rem); line-height: .8; color: var(--rust); margin-bottom: auto; }
 .method__card h3 { font-family: var(--serif); font-weight: 400; font-size: 2.25rem; margin: 3rem 0 .75rem; }
 .method__card p { color: var(--bone-2); margin: 0; }
 @media (max-width: 860px) { .method__grid { grid-template-columns: 1fr; } .method__card { min-height: auto; } .method__card h3 { margin-top: 1.5rem; } }
