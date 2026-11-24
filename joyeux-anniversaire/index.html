@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Psst, Moh… 🎂</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0c0c0b">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#0c0c0b; --ink-2:#161615; --bone:#ece8e1; --bone-2:#b9b4ab; --muted:#8a867f; --rust:#c8693d; --rust-2:#e08456; --flame:#ffb35c;
+      --serif:"Instrument Serif",serif; --sans:"Inter Tight",system-ui,sans-serif; --ease:cubic-bezier(.2,.7,.1,1); }
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--ink);color:var(--bone);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+    em{font-family:var(--serif);font-style:italic;color:var(--rust-2);font-weight:400}
+    button{font:inherit;cursor:pointer}
+    :focus-visible{outline:2px solid var(--rust-2);outline-offset:4px}
+    canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+    .scene{min-height:100svh;display:grid;place-items:center;text-align:center;padding:2rem 1.5rem;position:relative}
+    .hidden{display:none!important}
+    .fade-in{animation:fadeIn 1s var(--ease) both}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+
+    /* Scene 1 */
+    .eyebrow{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin:0 0 1.5rem}
+    .s1 h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.5rem,2rem + 8vw,8rem);line-height:.95;margin:0 0 2.5rem;letter-spacing:-.02em}
+    .envelope{background:none;border:0;padding:0;color:inherit;display:inline-flex;flex-direction:column;align-items:center;gap:1.25rem}
+    .envelope__body{width:180px;height:120px;position:relative;background:var(--bone);border-radius:4px;box-shadow:0 30px 60px rgba(0,0,0,.6);animation:float 3s ease-in-out infinite}
+    .envelope__body::before{content:"";position:absolute;inset:0;clip-path:polygon(0 0,50% 58%,100% 0);background:#d8d2c7}
+    .envelope__body::after{content:"🧪";position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:38px;height:38px;border-radius:50%;background:var(--rust);display:grid;place-items:center;font-size:18px;line-height:38px}
+    .envelope span{font-size:.875rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+    @keyframes float{50%{transform:translateY(-10px) rotate(-1.5deg)}}
+
+    /* Scene 2 — cake */
+    .s2 p.hint{color:var(--bone-2);margin:2.5rem 0 0}
+    .cake-btn{background:none;border:0;padding:0;color:inherit}
+    .cake{position:relative;width:min(280px,70vw);margin:0 auto}
+    .candles{display:flex;justify-content:center;gap:clamp(10px,3vw,18px);height:90px;align-items:flex-end;position:relative;z-index:2}
+    .candle{width:12px;height:56px;border-radius:3px;background:repeating-linear-gradient(45deg,var(--bone) 0 6px,var(--rust) 6px 12px);position:relative}
+    .flame{position:absolute;left:50%;bottom:100%;width:14px;height:24px;margin-left:-7px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff 0 20%,var(--flame) 45%,rgba(255,120,40,.0) 75%);filter:drop-shadow(0 0 10px rgba(255,170,80,.9));animation:flicker .12s infinite alternate;transform-origin:50% 100%;transition:opacity .4s,transform .4s}
+    @keyframes flicker{to{transform:scale(1.06,.94) rotate(2deg)}}
+    .out .flame{opacity:0;transform:scale(.2) translateY(-10px);animation:none}
+    .smoke{position:absolute;left:50%;bottom:100%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:rgba(236,232,225,.5);opacity:0}
+    .out .smoke{animation:smoke 1.6s ease-out forwards}
+    @keyframes smoke{0%{opacity:.7;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-70px) translateX(10px) scale(6)}}
+    .tier{border-radius:10px 10px 6px 6px;margin:0 auto;position:relative}
+    .tier--top{width:70%;height:64px;background:var(--bone)}
+    .tier--top::after{content:"";position:absolute;left:0;right:0;top:0;height:20px;background:radial-gradient(circle at 10px 0,var(--rust) 10px,transparent 11px) 0 0/20px 20px repeat-x}
+    .tier--bottom{width:100%;height:80px;background:var(--ink-2);border:1px solid #2a2a28;margin-top:-2px}
+    .tier--bottom::before{content:attr(data-age);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:2.4rem;color:var(--rust-2)}
+    .plate{width:115%;height:10px;margin-left:-7.5%;background:#2a2a28;border-radius:50%}
+
+    /* Scene 3 — the wish */
+    .s3{display:block;text-align:left;padding:clamp(4rem,10vh,7rem) clamp(1.25rem,5vw,4rem)}
+    .s3 header{text-align:center;margin-bottom:clamp(3rem,8vh,5rem)}
+    .s3 h1{font-family:var(--serif);font-weight:400;font-size:clamp(3.5rem,1.5rem + 9vw,10rem);line-height:.9;margin:0;letter-spacing:-.03em}
+    .s3 h1 .l{display:block;animation:fadeIn 1.2s var(--ease) both}
+    .s3 h1 .l:nth-child(2){animation-delay:.2s}
+    .polaroids{display:flex;justify-content:center;flex-wrap:wrap;gap:clamp(.5rem,2vw,1.5rem);margin:0 auto clamp(3rem,8vh,5rem);max-width:1100px}
+    .polaroid{margin:0;background:var(--bone);padding:10px 10px 44px;width:clamp(140px,22vw,230px);box-shadow:0 25px 50px rgba(0,0,0,.55);position:relative;opacity:0;animation:drop .9s var(--ease) forwards;transition:transform .4s var(--ease)}
+    .polaroid:hover{transform:rotate(0) scale(1.05)!important;z-index:5}
+    .polaroid img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block}
+    .polaroid figcaption{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-family:var(--serif);font-style:italic;color:var(--ink);font-size:1.15rem}
+    @keyframes drop{from{opacity:0;transform:translateY(-60px) rotate(var(--r,0deg)) scale(1.1)}to{opacity:1;transform:rotate(var(--r,0deg))}}
+    .letter{max-width:40rem;margin:0 auto;background:var(--ink-2);border:1px solid #2a2a28;padding:clamp(1.75rem,5vw,3.5rem);position:relative}
+    .letter::before{content:"“";position:absolute;top:-.2em;left:.2em;font-family:var(--serif);font-size:7rem;color:var(--rust);line-height:1}
+    .letter p{font-family:var(--serif);font-size:clamp(1.25rem,1rem + .9vw,1.6rem);line-height:1.45;margin:0 0 1.2em;color:var(--bone)}
+    .letter .sign{font-family:var(--sans);font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:2rem 0 0}
+    .gift{text-align:center;margin:clamp(4rem,10vh,6rem) auto 2rem;max-width:40rem}
+    .gift h2{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,1.4rem + 3.5vw,4rem);line-height:1.05;margin:0 0 1rem}
+    .gift p{color:var(--bone-2);margin:0 0 2.25rem}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 1.8rem;border-radius:999px;background:var(--rust);color:var(--ink);font-weight:600;text-decoration:none;border:0;transition:transform .3s var(--ease),background .3s}
+    .btn:hover{background:var(--rust-2);transform:translateY(-2px)}
+    .again{display:block;margin:1.5rem auto 0;background:none;border:0;color:var(--muted);font-size:.85rem;text-decoration:underline;text-underline-offset:3px}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}.polaroid{opacity:1}}
+  </style>
+</head>
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <!-- 1. L'enveloppe -->
+  <section class="scene s1" id="s1">
+    <div class="fade-in">
+      <p class="eyebrow" id="date-line">Aujourd'hui</p>
+      <h1>Psst, <em id="name-1">Moh</em>.<br>Tu as un message.</h1>
+      <button class="envelope" id="open" type="button" aria-label="Ouvrir le message">
+        <span class="envelope__body" aria-hidden="true"></span>
+        <span>Ouvrir</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- 2. Le gâteau -->
+  <section class="scene s2 hidden" id="s2">
+    <div class="fade-in">
+      <p class="eyebrow">Fais un vœu</p>
+      <button class="cake-btn" id="blow" type="button" aria-label="Souffler les bougies">
+        <div class="cake" id="cake">
+          <div class="candles" id="candles"></div>
+          <div class="tier tier--top"></div>
+          <div class="tier tier--bottom" id="age-tier" data-age=""></div>
+          <div class="plate"></div>
+        </div>
+      </button>
+      <p class="hint">Clique sur le gâteau pour souffler les bougies 🌬️</p>
+    </div>
+  </section>
+
+  <!-- 3. Le message + le cadeau -->
+  <section class="scene s3 hidden" id="s3">
+    <header>
+      <p class="eyebrow">Joyeux anniversaire</p>
+      <h1><span class="l">Joyeux anniv',</span><span class="l"><em id="name-2">Moh</em>.</span></h1>
+    </header>
+
+    <div class="polaroids" id="polaroids"></div>
+
+    <article class="letter" id="letter"></article>
+
+    <div class="gift">
+      <p class="eyebrow">🎁 Ton cadeau</p>
+      <h2>Ce site.<br><em>Il est à toi.</em></h2>
+      <p>Ton coaching mérite mieux qu'un lien dans une bio. Voilà ta vitrine : ta méthode, tes photos, ton calculateur, et ton Calendly. Prêt à recevoir tes premiers clients.</p>
+      <a class="btn" href="../">Découvrir mon site →</a>
+      <button class="again" id="again" type="button">Encore des confettis 🎉</button>
+    </div>
+  </section>
+
+  <script>
+    /* ============================================================
+       ✏️  À PERSONNALISER — tout le contenu de la surprise est ici
+       ============================================================ */
+    const BIRTHDAY = {
+      name: "Moh",
+      age: 22,                 // ← son âge (nombre de bougies, max 12 affichées)
+      dateLine: "",            // ← ex. "12 décembre 2026" (vide = date du jour)
+      message: [
+        "Joyeux anniversaire mon cousin ! ✨",
+        "Je te regarde construire ton truc depuis des mois : les entraînements, les shootings, et maintenant ton coaching. Tu n'attends pas que les choses arrivent, tu les fais arriver.",
+        "Alors cette année, au lieu d'un cadeau qui finit dans un tiroir, je t'ai fait quelque chose qui travaille pour toi.",
+        "Que cette nouvelle année te ramène de la force, de la constance, et plein de clients. Stay in mouvement. ♾"
+      ],
+      from: "Ton cousin",          // ← signe comme tu veux
+      photos: [                // ← remplace par des photos de famille si tu veux
+        { src: "../assets/img/sun.jpg",     caption: "soleil ☀️" },
+        { src: "../assets/img/gym-tee.jpg", caption: "la discipline" },
+        { src: "../assets/img/suit.jpg",    caption: "le style" },
+        { src: "../assets/img/field.jpg",   caption: "toujours toi" }
+      ]
+    };
+    /* ============================================================ */
+
+    const $ = (id) => document.getElementById(id);
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    $('name-1').textContent = BIRTHDAY.name;
+    $('name-2').textContent = BIRTHDAY.name;
+    document.title = `Psst, ${BIRTHDAY.name}… 🎂`;
+    $('date-line').textContent = BIRTHDAY.dateLine ||
+      new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+    $('age-tier').dataset.age = BIRTHDAY.age;
+
+    const n = Math.min(Math.max(BIRTHDAY.age, 1), 12);
+    $('candles').innerHTML = Array.from({ length: n },
+      () => '<span class="candle"><i class="flame"></i><i class="smoke"></i></span>').join('');
+
+    const rot = [-6, 4, -3, 7, -5, 3];
+    $('polaroids').innerHTML = BIRTHDAY.photos.map((p, i) =>
+      `<figure class="polaroid" style="--r:${rot[i % rot.length]}deg;animation-delay:${0.6 + i * 0.18}s">
+         <img src="${p.src}" alt="${p.caption}"><figcaption>${p.caption}</figcaption></figure>`).join('');
+
+    const letter = $('letter');
+    BIRTHDAY.message.forEach((t) => { const p = document.createElement('p'); p.textContent = t; letter.appendChild(p); });
+    const sign = document.createElement('p'); sign.className = 'sign'; sign.textContent = '— ' + BIRTHDAY.from; letter.appendChild(sign);
+
+    function show(from, to) {
+      $(from).classList.add('hidden');
+      $(to).classList.remove('hidden');
+      window.scrollTo(0, 0);
+    }
+
+    $('open').addEventListener('click', () => { show('s1', 's2'); $('blow').focus(); });
+
+    let blown = false;
+    $('blow').addEventListener('click', () => {
+      if (blown) return; blown = true;
+      $('cake').classList.add('out');
+      setTimeout(() => { show('s2', 's3'); burst(); }, reduce ? 0 : 1300);
+    });
+    $('again').addEventListener('click', burst);
+
+    // Aperçu direct du message : /joyeux-anniversaire/#message
+    if (location.hash === '#message') { $('s1').classList.add('hidden'); $('s3').classList.remove('hidden'); }
+
+    /* --- Confetti --- */
+    const cv = $('confetti'), ctx = cv.getContext('2d');
+    let parts = [], raf = null;
+    const colors = ['#c8693d', '#e08456', '#ece8e1', '#b9b4ab', '#ffb35c', '#ffffff'];
+    function size() { cv.width = innerWidth * devicePixelRatio; cv.height = innerHeight * devicePixelRatio; ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); }
+    size(); addEventListener('resize', size);
+    function burst() {
+      if (reduce) return;
+      for (let i = 0; i < 180; i++) {
+        const fromLeft = i % 2 === 0;
+        parts.push({
+          x: fromLeft ? -10 : innerWidth + 10, y: innerHeight * (0.5 + Math.random() * 0.3),
+          vx: (fromLeft ? 1 : -1) * (6 + Math.random() * 9), vy: -(9 + Math.random() * 10),
+          w: 6 + Math.random() * 6, h: 8 + Math.random() * 10, r: Math.random() * 6, vr: (Math.random() - .5) * .4,
+          c: colors[(Math.random() * colors.length) | 0], life: 0
+        });
+      }
+      if (!raf) loop();
+    }
+    function loop() {
+      ctx.clearRect(0, 0, innerWidth, innerHeight);
+      parts.forEach((p) => {
+        p.vy += 0.32; p.vx *= 0.985; p.vy *= 0.99; p.x += p.vx; p.y += p.vy; p.r += p.vr; p.life++;
+        ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.r);
+        ctx.fillStyle = p.c; ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h * Math.abs(Math.cos(p.life * .15)));
+        ctx.restore();
+      });
+      parts = parts.filter((p) => p.y < innerHeight + 40 && p.life < 600);
+      raf = parts.length ? requestAnimationFrame(loop) : (ctx.clearRect(0, 0, innerWidth, innerHeight), null);
+    }
+  </script>
+</body>
+</html>
