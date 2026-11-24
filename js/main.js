@@ -15,7 +15,7 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-  // Play gallery videos only while visible
+  // Play videos only while visible
   const vio = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
       if (reduceMotion) return;
@@ -23,7 +23,7 @@
       else e.target.pause();
     });
   }, { threshold: 0.3 });
-  document.querySelectorAll('.g video').forEach((v) => vio.observe(v));
+  document.querySelectorAll('.backstage__item video').forEach((v) => vio.observe(v));
 
   // Le Labo — bulking calculator (Mifflin–St Jeor)
   const form = document.getElementById('calc');

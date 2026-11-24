@@ -14,6 +14,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Je suis très fin. C'est vraiment possible pour moi ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Les profils fins progressent souvent vite au début, à condition de manger assez."}},
+    {"@type":"Question","name":"En combien de temps je vais voir des résultats ?","acceptedAnswer":{"@type":"Answer","text":"Les premiers changements arrivent en quelques semaines ; comptez environ trois mois de régularité pour un changement visible."}},
+    {"@type":"Question","name":"Est-ce que je dois prendre des compléments ?","acceptedAnswer":{"@type":"Answer","text":"Ce n'est pas obligatoire. La base reste l'alimentation, l'entraînement et le sommeil."}}
+  ]}
+  </script>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -22,10 +29,10 @@
     <a href="#top" class="nav__logo" aria-label="Mohamed Aydi, retour en haut">M<span>.</span>A</a>
     <nav class="nav__links" aria-label="Navigation principale">
       <a href="#methode">Méthode</a>
+      <a href="#profil">Ton profil</a>
       <a href="#labo">Le Labo</a>
-      <a href="#mouvement">Mouvement</a>
       <a href="#communaute">Communauté</a>
-      <a href="#about">À propos</a>
+      <a href="#faq">FAQ</a>
     </nav>
     <a href="#reserver" class="btn btn--small">Réserver un appel</a>
   </header>
@@ -67,7 +74,7 @@
       </div>
       <div class="manifesto__text reveal">
         <p class="eyebrow">Le manifeste</p>
-        <p class="big-quote">Le corps n'est pas qu'une question de <em>poids soulevé</em>. C'est une façon de se tenir, de bouger, de s'habiller, de <em>se présenter au monde.</em></p>
+        <p class="big-quote">Le corps n'est pas qu'une question de <em class="peek" data-peek="assets/img/flex.jpg">poids soulevé</em>. C'est une façon de <span class="peek" data-peek="assets/img/corner.jpg">se tenir</span>, de <span class="peek" data-peek="assets/img/studio.jpg">bouger</span>, de <span class="peek" data-peek="assets/img/suit.jpg">s'habiller</span>, de <em class="peek" data-peek="assets/img/field.jpg">se présenter au monde.</em></p>
         <p>Prendre de la masse quand on est jeune et naturellement fin, c'est frustrant. On mange « beaucoup », on s'entraîne « dur », et rien ne bouge. Le problème est rarement la motivation. C'est la méthode.</p>
         <p>Mon approche : des bases scientifiques, un plan simple à suivre, et une régularité qui finit par se voir dans le miroir.</p>
       </div>
@@ -98,6 +105,29 @@
       </ol>
     </section>
 
+    <!-- MOUVEMENT : séquence au scroll -->
+    <section class="seq" id="mouvement" aria-label="Mouvement, une séquence photo">
+      <div class="seq__sticky">
+        <div class="seq__frames">
+          <figure class="seq__frame is-active" data-word="Tension"><img src="assets/img/arch.jpg" alt="Torse cambré vers l'arrière, main sur la poitrine"></figure>
+          <figure class="seq__frame" data-word="Contrôle"><img src="assets/img/hands.jpg" alt="Avant-bras croisés dans le dos" loading="lazy"></figure>
+          <figure class="seq__frame" data-word="Présence"><img src="assets/img/studio.jpg" alt="Debout en studio, mains devant le visage" loading="lazy"></figure>
+          <figure class="seq__frame" data-word="Lâcher-prise"><img src="assets/img/seated-back.jpg" alt="Assis de dos, le dos en lumière" loading="lazy"></figure>
+          <figure class="seq__frame" data-word="Mouvement."><img src="assets/img/reach.jpg" alt="Bras tendu vers le haut" loading="lazy"></figure>
+        </div>
+        <div class="seq__overlay">
+          <p class="eyebrow">Mouvement</p>
+          <p class="seq__word" id="seq-word">Tension</p>
+          <div class="seq__meta">
+            <span class="seq__count"><span id="seq-i">01</span> / 05</span>
+            <span class="seq__bar"><i id="seq-bar"></i></span>
+            <span class="seq__credit">Photos @prateek_it_is</span>
+          </div>
+        </div>
+        <p class="seq__hint" aria-hidden="true">Scroll</p>
+      </div>
+    </section>
+
     <!-- POUR QUI -->
     <section class="who section">
       <div class="who__img reveal">
@@ -114,6 +144,22 @@
           <li class="reveal"><span>→</span> Tu veux un physique qui se voit aussi bien en salle qu'en costume.</li>
         </ul>
         <a href="#reserver" class="btn reveal">Réserve ton premier appel</a>
+      </div>
+    </section>
+
+    <!-- QUIZ PROFIL -->
+    <section class="quiz section" id="profil">
+      <div class="section__head reveal">
+        <p class="eyebrow">Ton profil</p>
+        <h2>Qu'est-ce qui te bloque<br><em>vraiment ?</em></h2>
+        <p class="section__sub">Quatre questions, trente secondes. Tu repars avec tes trois priorités.</p>
+      </div>
+      <div class="quiz__card reveal" id="quiz">
+        <div class="quiz__top">
+          <span class="quiz__step" id="quiz-step">Question 1 / 4</span>
+          <span class="quiz__progress"><i id="quiz-bar"></i></span>
+        </div>
+        <div class="quiz__body" id="quiz-body" aria-live="polite"></div>
       </div>
     </section>
 
@@ -177,29 +223,31 @@
     </section>
 
     <!-- MOUVEMENT / GALERIE -->
-    <section class="gallery section" id="mouvement">
+    <section class="sheet section" id="galerie">
       <div class="section__head reveal">
-        <p class="eyebrow">Mouvement</p>
-        <h2>Le corps comme<br><em>expression.</em></h2>
+        <p class="eyebrow">Planche contact</p>
+        <h2>Hors de la salle,<br><em>devant l'objectif.</em></h2>
       </div>
-      <div class="gallery__grid">
-        <figure class="g g--tall reveal"><img src="assets/img/arch.jpg" alt="Portrait noir et blanc, torse cambré vers l'arrière" loading="lazy"></figure>
-        <figure class="g g--wide reveal"><img src="assets/img/studio.jpg" alt="En studio, pantalon large, mains devant le visage" loading="lazy"></figure>
-        <figure class="g reveal"><video src="assets/video/mouvement-1.mp4" muted loop playsinline preload="metadata" aria-label="Vidéo : Sun, suit and mouvements"></video></figure>
-        <figure class="g reveal"><img src="assets/img/hands.jpg" alt="Gros plan sur les avant-bras croisés dans le dos" loading="lazy"></figure>
-        <figure class="g reveal"><img src="assets/img/seated-back.jpg" alt="Assis de dos, muscles du dos en lumière" loading="lazy"></figure>
-        <figure class="g reveal"><video src="assets/video/mouvement-2.mp4" muted loop playsinline preload="metadata" aria-label="Vidéo : Sun, suit and mouvements"></video></figure>
-        <figure class="g reveal"><img src="assets/img/portrait-shadow.jpg" alt="Portrait en clair-obscur, ombres des boucles sur le visage" loading="lazy"></figure>
-        <figure class="g reveal"><img src="assets/img/gym-mirror.jpg" alt="Selfie torse nu au miroir de la salle" loading="lazy"></figure>
+      <div class="sheet__film reveal">
+        <p class="sheet__edge" aria-hidden="true"><span>MA 400</span><span>@roeeeeyy · 08—2025</span><span>MA 400</span><span>@eunice.rsl · 03—2026</span></p>
+        <div class="sheet__grid">
+          <button class="frame" type="button" data-full="assets/img/field.jpg"><img src="assets/img/field.jpg" alt="En costume oversize sur un terrain de foot" loading="lazy"><span class="frame__no">24</span></button>
+          <button class="frame frame--pick" type="button" data-full="assets/img/portrait-shadow.jpg"><img src="assets/img/portrait-shadow.jpg" alt="Portrait en clair-obscur, ombres des boucles" loading="lazy"><span class="frame__no">24A</span><svg class="frame__mark" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M30 105 C 25 45, 120 18, 165 60 C 198 95, 170 170, 100 178 C 40 184, 12 140, 38 92"/></svg></button>
+          <button class="frame" type="button" data-full="assets/img/street.jpg"><img src="assets/img/street.jpg" alt="Dans la rue, veste en cuir et sac de sport" loading="lazy"><span class="frame__no">25</span></button>
+          <button class="frame" type="button" data-full="assets/img/fence.jpg"><img src="assets/img/fence.jpg" alt="Costume et cravate rouge contre un grillage" loading="lazy"><span class="frame__no">25A</span></button>
+          <button class="frame" type="button" data-full="assets/img/portrait-tank.jpg"><img src="assets/img/portrait-tank.jpg" alt="Portrait de profil en débardeur blanc" loading="lazy"><span class="frame__no">26</span></button>
+          <button class="frame frame--pick" type="button" data-full="assets/img/window.jpg"><img src="assets/img/window.jpg" alt="Assis au sol près d'une fenêtre lumineuse" loading="lazy"><span class="frame__no">26A</span><svg class="frame__mark" viewBox="0 0 200 200" preserveAspectRatio="none" aria-hidden="true"><path d="M40 70 C 70 20, 170 30, 172 100 C 174 160, 110 185, 60 165 C 20 148, 18 95, 52 62"/></svg></button>
+        </div>
+        <p class="sheet__edge" aria-hidden="true"><span>24</span><span>25</span><span>26</span><span>27</span></p>
       </div>
-      <p class="credits">Photos : @prateek_it_is · @roeeeeyy · @eunice.rsl</p>
+      <p class="credits">Photos : @roeeeeyy · @eunice.rsl · @prateek_it_is. Clique sur une image pour l'agrandir.</p>
     </section>
 
     <!-- ABOUT -->
     <section class="about section" id="about">
       <div class="about__collage">
-        <img class="about__a reveal" src="assets/img/field.jpg" alt="Mohamed en costume oversize sur un terrain de foot" loading="lazy">
-        <img class="about__b reveal" src="assets/img/fence.jpg" alt="Mohamed en costume et cravate rouge contre un grillage" loading="lazy">
+        <img class="about__a reveal" src="assets/img/suit.jpg" alt="Mohamed en costume marron dans une cabine d'essayage" loading="lazy">
+        <img class="about__b reveal" src="assets/img/gym-tee.jpg" alt="Selfie au miroir de la salle en t-shirt noir" loading="lazy">
         <img class="about__c reveal" src="assets/img/sun.jpg" alt="Selfie au soleil, cheveux bouclés" loading="lazy">
       </div>
       <div class="about__text">
@@ -215,13 +263,17 @@
       </div>
     </section>
 
-    <!-- LIFESTYLE STRIP -->
-    <section class="strip" aria-label="Lifestyle">
-      <img src="assets/img/suit.jpg" alt="Costume marron dans une cabine d'essayage" loading="lazy">
-      <img src="assets/img/street.jpg" alt="Dans la rue, veste en cuir et sac de sport" loading="lazy">
-      <img src="assets/img/window.jpg" alt="Assis au sol près d'une fenêtre lumineuse" loading="lazy">
-      <img src="assets/img/gym-tee.jpg" alt="Selfie au miroir de la salle en t-shirt noir" loading="lazy">
-      <img src="assets/img/portrait-tank.jpg" alt="Portrait de profil en débardeur blanc" loading="lazy">
+    <!-- COULISSES -->
+    <section class="backstage section" aria-label="En salle">
+      <div class="section__head reveal">
+        <p class="eyebrow">Coulisses</p>
+        <h2>Pas de magie.<br><em>Des séances.</em></h2>
+      </div>
+      <div class="backstage__row">
+        <figure class="backstage__item reveal"><video src="assets/video/mouvement-1.mp4" muted loop playsinline preload="metadata" aria-label="Vidéo d'entraînement"></video></figure>
+        <figure class="backstage__item backstage__item--mid reveal"><img src="assets/img/gym-mirror.jpg" alt="Selfie torse nu au miroir de la salle" loading="lazy"></figure>
+        <figure class="backstage__item reveal"><video src="assets/video/mouvement-2.mp4" muted loop playsinline preload="metadata" aria-label="Vidéo d'entraînement"></video></figure>
+      </div>
     </section>
 
     <!-- COMMUNAUTÉ SKOOL
@@ -245,6 +297,22 @@
       </div>
       <div class="community__img reveal">
         <img src="assets/img/corner.jpg" alt="Assis dans un coin de studio blanc, tout en noir" loading="lazy">
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq section" id="faq">
+      <div class="section__head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Les questions<br><em>qu'on me pose.</em></h2>
+      </div>
+      <div class="faq__list">
+        <details class="reveal"><summary>Je suis très fin. C'est vraiment possible pour moi ?</summary><p>Oui. Les profils « fins » sont souvent ceux qui progressent le plus vite au début, à condition de manger assez. Le plus souvent, le blocage vient des calories, pas de la génétique.</p></details>
+        <details class="reveal"><summary>En combien de temps je vais voir des résultats ?</summary><p>Les premiers changements (force, énergie, poids sur la balance) arrivent en quelques semaines. Pour que ça se voie vraiment dans le miroir, compte environ trois mois de régularité.</p></details>
+        <details class="reveal"><summary>Est-ce que je dois prendre des compléments ?</summary><p>Ce n'est pas obligatoire. La base, c'est l'alimentation, l'entraînement et le sommeil. Une whey peut aider à atteindre tes protéines, et la créatine est le complément le plus étudié, mais aucun ne remplace le reste.</p></details>
+        <details class="reveal"><summary>Je n'ai pas un gros budget pour manger. Comment je fais ?</summary><p>On construit tes repas avec des aliments simples et bon marché : riz, pâtes, œufs, lait, flocons d'avoine, légumineuses, poulet. Prendre de la masse ne demande pas de produits chers.</p></details>
+        <details class="reveal"><summary>Je suis végétarien(ne). C'est compatible ?</summary><p>Oui. Il faut juste être plus attentif aux sources de protéines (œufs, produits laitiers, tofu, légumineuses) et bien les répartir sur la journée.</p></details>
+        <details class="reveal"><summary>Comment se passe l'appel découverte ?</summary><p>On fait le point sur ton objectif, ton point de départ et ce qui te bloque. Tu repars avec une direction claire, sans engagement.</p></details>
       </div>
     </section>
 
@@ -273,11 +341,18 @@
         <a href="#communaute" id="skool-footer" hidden>Skool</a>
         <a href="https://calendly.com/mohamedaydi7/first-call" target="_blank" rel="noopener">Calendly</a>
       </div>
-      <p class="footer__copy">© <span id="year">2026</span> Mohamed Aydi · Paris</p>
+      <p class="footer__copy">© <span id="year">2026</span> Mohamed Aydi · Paris · <a href="mentions-legales/">Mentions légales</a></p>
     </div>
   </footer>
 
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox__close" type="button">Fermer</button>
+    <img alt="">
+  </div>
+  <img class="peek-img" id="peek" alt="" aria-hidden="true">
+
   <script src="js/main.js" defer></script>
+  <script src="js/features.js" defer></script>
   <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
